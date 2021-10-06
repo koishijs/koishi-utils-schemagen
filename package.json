@@ -1,9 +1,9 @@
 {
   "name": "koishi-utils-schemagen",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "在 Koishi.js 中，使用类装饰器定义 Schema",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
   "scripts": {
     "lint": "eslint --fix .",
     "build": "tsc"
