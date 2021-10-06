@@ -45,11 +45,11 @@ export class Config {
   @ObjectSchema(B)
   anotherB: B;
 
-  // Dict
+  // 字典
   @DefineSchema({ type: B, dict: true })
   biDict: Record<string, B>;
 
-  // Dict 和字典组合会让字典在内而数组在外。此外 ObjectSchema 后面也可以指定属性。
+  // 数组和字典组合会让字典在内而数组在外。此外 ObjectSchema 后面也可以指定属性。
   @ObjectSchema(B, { dict: true, array: true })
   biDictArr: Record<string, B>[];
 }
