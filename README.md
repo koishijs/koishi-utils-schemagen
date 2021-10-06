@@ -59,7 +59,7 @@ export class Config {
 
 ```ts
 // 获取 Schema 定义
-const schema = schemaFromClass(B);
+const schema = schemaFromClass(Config);
 // 直接获取 Config 对象并实例化，可以代替 Schema.validate 使用。对于嵌套类会进行循环实例化。
-const config = schemaTransform(B, someObject);
+const config = schemaTransform(Config, someObject);
 ```
