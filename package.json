@@ -1,6 +1,6 @@
 {
   "name": "koishi-utils-schemagen",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "在 Koishi.js 中，使用类装饰器定义 Schema",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://code.mycard.moe/nanahira/koishi-utils-schema.git"
+    "url": "https://code.mycard.moe/3rdeye/koishi-utils-schema.git"
   },
   "bugs": {
-    "url": "https://code.mycard.moe/nanahira/koishi-utils-schema/issues"
+    "url": "https://code.mycard.moe/3rdeye/koishi-utils-schema/issues"
   },
-  "homepage": "https://code.mycard.moe/nanahira/koishi-utils-schema",
+  "homepage": "https://code.mycard.moe/3rdeye/koishi-utils-schema",
   "keywords": [
     "Koishi.js",
     "Nest.js",
