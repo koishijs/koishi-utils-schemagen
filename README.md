@@ -5,7 +5,7 @@
 ## 安装
 
 ```
-npm install koishi-utils-schemagen
+npm install koishi-utils-schemagen reflect-metadata
 ```
 
 ## 使用
