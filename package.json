@@ -1,6 +1,6 @@
 {
   "name": "koishi-utils-schemagengen",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "在 Koishi.js 中，使用类装饰器定义 Schema",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",

@@ -4,9 +4,9 @@ import {
   plainToClass,
   TransformOptions,
 } from 'class-transformer';
-import { SchemaOptions, SchemaOptionsDict } from './def';
+import { SchemaClassOptions, SchemaOptions, SchemaOptionsDict } from './def';
 import 'reflect-metadata';
-import { SchemaKeysMetaKey, SchemaMetaKey } from './constants';
+import { SchemaClassKey, SchemaKeysMetaKey, SchemaMetaKey } from './constants';
 import _ from 'lodash';
 
 function getBasePropertySchemaFromOptions(options: SchemaOptions) {
@@ -32,14 +32,7 @@ function getBasePropertySchemaFromOptions(options: SchemaOptions) {
   }
 }
 
-function getPropertySchemaFromOptions<PT>(options: SchemaOptions): Schema<PT> {
-  let schema = getBasePropertySchemaFromOptions(options);
-  if (options.dict) {
-    schema = Schema.dict(schema);
-  }
-  if (options.array) {
-    schema = Schema.array(schema);
-  }
+function applyOptionsToSchema(schema: Schema, options: SchemaClassOptions) {
   if (options.required != undefined) {
     schema._required = options.required;
   }
@@ -52,6 +45,20 @@ function getPropertySchemaFromOptions<PT>(options: SchemaOptions): Schema<PT> {
   if (options.comment != undefined) {
     schema._comment = options.comment;
   }
+  if (options.desc != undefined) {
+    schema.desc = options.desc;
+  }
+}
+
+function getPropertySchemaFromOptions<PT>(options: SchemaOptions): Schema<PT> {
+  let schema = getBasePropertySchemaFromOptions(options);
+  if (options.dict) {
+    schema = Schema.dict(schema);
+  }
+  if (options.array) {
+    schema = Schema.array(schema);
+  }
+  applyOptionsToSchema(schema, options);
   return schema;
 }
 
@@ -83,11 +90,17 @@ function schemaOptionsFromClass<T>(
 }
 
 export function schemaFromClass<T>(cl: ClassConstructor<T>): Schema<T> {
+  let schema: Schema;
   const optionsDict = schemaOptionsFromClass(cl);
   if (!optionsDict) {
-    return Schema.any();
+    schema = Schema.any();
+  } else {
+    schema = schemasFromDict<T>(optionsDict);
   }
-  return schemasFromDict<T>(optionsDict);
+  const extraOptions: SchemaClassOptions =
+    Reflect.getMetadata(SchemaClassKey, cl) || {};
+  applyOptionsToSchema(schema, extraOptions);
+  return schema;
 }
 
 export function schemaTransform<T>(cl: ClassConstructor<T>, data: any): T {

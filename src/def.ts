@@ -9,13 +9,16 @@ export type SchemaType =
   | 'never'
   | ClassConstructor<any>;
 
-export interface SchemaOptions {
-  schema?: Schema<any>;
+export interface SchemaClassOptions {
   desc?: string;
   required?: boolean;
   hidden?: boolean;
   comment?: string;
   default?: any;
+}
+
+export interface SchemaOptions extends SchemaClassOptions {
+  schema?: Schema<any>;
   dict?: boolean;
   array?: boolean;
   type?: SchemaType;

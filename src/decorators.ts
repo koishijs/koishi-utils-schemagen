@@ -1,6 +1,6 @@
-import { SchemaOptions } from './def';
+import { SchemaClassOptions, SchemaOptions } from './def';
 import 'reflect-metadata';
-import { SchemaKeysMetaKey, SchemaMetaKey } from './constants';
+import { SchemaClassKey, SchemaKeysMetaKey, SchemaMetaKey } from './constants';
 import { Schema } from 'koishi';
 import {
   ClassConstructor,
@@ -40,6 +40,13 @@ export function DefineSchema(options: SchemaOptions): PropertyDecorator {
         typeDecorator(obj, key);
       }
     }
+  };
+}
+
+export function SchemaConf(options: SchemaClassOptions): ClassDecorator {
+  return (obj) => {
+    const objClass = obj;
+    Reflect.defineMetadata(SchemaClassKey, options, objClass);
   };
 }
 

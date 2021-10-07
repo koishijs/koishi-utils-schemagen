@@ -14,6 +14,10 @@ npm install koishi-utils-schemagen reflect-metadata
 
 ```ts
 // 使用装饰器定义 Schema。
+// SchemaConf 填写 Schema 本身的顶级属性。
+@SchemaConf({
+  desc: 'my desc',
+})
 export class Config {
   // 基本的数据类型
   @DefineSchema({ type: 'number', required: true })
