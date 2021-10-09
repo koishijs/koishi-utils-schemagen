@@ -1,5 +1,5 @@
 {
-  "name": "koishi-utils-schemagengen",
+  "name": "koishi-utils-schemagen",
   "version": "1.0.7",
   "description": "在 Koishi.js 中，使用类装饰器定义 Schema",
   "main": "dist/src/index.js",
@@ -18,8 +18,6 @@
   "homepage": "https://code.mycard.moe/3rdeye/koishi-utils-schemagen",
   "keywords": [
     "Koishi.js",
-    "Nest.js",
-    "nest",
     "koishi",
     "qqbot",
     "cqhttp",
