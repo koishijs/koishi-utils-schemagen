@@ -1,9 +1,5 @@
 import { Schema } from 'koishi';
-import {
-  ClassConstructor,
-  plainToClass,
-  TransformOptions,
-} from 'class-transformer';
+import { ClassConstructor, plainToClass } from 'class-transformer';
 import { SchemaClassOptions, SchemaOptions, SchemaOptionsDict } from './def';
 import 'reflect-metadata';
 import { SchemaClassKey, SchemaKeysMetaKey, SchemaMetaKey } from './constants';

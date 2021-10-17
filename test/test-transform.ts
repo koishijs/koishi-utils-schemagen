@@ -1,9 +1,4 @@
-import {
-  DefineSchema,
-  SchemaConf,
-  schemaFromClass,
-  schemaTransform,
-} from '..';
+import { DefineSchema, SchemaConf, schemaFromClass, schemaTransform } from '..';
 import { Schema } from 'koishi';
 
 @SchemaConf({
