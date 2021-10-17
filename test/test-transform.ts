@@ -41,6 +41,7 @@ console.log(JSON.stringify(schema, null, 2));
 const testObject = {
   a: 4,
   bi: { aa: 3 },
+  c: ['a', 'b'],
   biArr: [{ aa: 4 }, { bb: false }],
   biDict: [{ cccc: { aa: 5 } }],
 };
@@ -50,6 +51,7 @@ const testObject = {
 // console.log(JSON.stringify(testValidate, null, 2));
 const testTransform = schemaTransform(A, testObject);
 //console.log(JSON.stringify(testTransform, null, 2));
+console.log(testTransform.c);
 console.log(testTransform.bi instanceof B);
 console.log(testTransform.biArr[0] instanceof B);
 console.log(testTransform.biDict[0].cccc instanceof B);

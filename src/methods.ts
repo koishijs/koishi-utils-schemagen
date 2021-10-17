@@ -43,6 +43,9 @@ function applyOptionsToSchema(schema: Schema, options: SchemaClassOptions) {
   if (options.comment != undefined) {
     schema._comment = options.comment;
   }
+  if (options.allowUnknown != undefined) {
+    schema.flag = options.allowUnknown;
+  }
   if (options.desc != undefined) {
     schema.desc = options.desc;
   }

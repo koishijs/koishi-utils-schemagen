@@ -14,6 +14,7 @@ export interface SchemaClassOptions {
   desc?: string;
   required?: boolean;
   hidden?: boolean;
+  allowUnknown?: boolean;
   comment?: string;
   default?: any;
 }
