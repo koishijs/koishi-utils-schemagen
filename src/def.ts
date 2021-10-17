@@ -5,6 +5,7 @@ export type SchemaType =
   | 'string'
   | 'number'
   | 'boolean'
+  | 'object'
   | 'any'
   | 'never'
   | ClassConstructor<any>;

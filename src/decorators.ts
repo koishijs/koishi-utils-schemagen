@@ -20,13 +20,48 @@ function transformDict<T>(cl: ClassConstructor<T>, val: any, array: boolean) {
   }
 }
 
-export function DefineSchema(options: SchemaOptions): PropertyDecorator {
+function getStringFromNativeType(nativeType: any) {
+  if (!nativeType) {
+    return;
+  }
+  const nativeTypeString = nativeType.toString() as string;
+  if (!nativeTypeString) {
+    return;
+  }
+  if (nativeTypeString.startsWith('class')) {
+    return 'class';
+  }
+  if (!nativeTypeString.startsWith('function ')) {
+    return;
+  }
+  const firstLeftBracketPos = nativeTypeString.indexOf('()');
+  if (firstLeftBracketPos === -1) {
+    return;
+  }
+  const typeString = nativeTypeString.slice(9, firstLeftBracketPos);
+  return typeString.toLowerCase();
+}
+
+export function DefineSchema(options: SchemaOptions = {}): PropertyDecorator {
   return (obj, key) => {
     const objClass = obj.constructor;
     const keys: string[] =
       Reflect.getMetadata(SchemaKeysMetaKey, objClass) || [];
     keys.push(key.toString());
     Reflect.defineMetadata(SchemaKeysMetaKey, keys, objClass);
+    const nativeType = Reflect.getMetadata('design:type', obj, key);
+    const nativeTypeString = getStringFromNativeType(nativeType);
+    if (!options.type) {
+      if (nativeTypeString && nativeTypeString !== 'array') {
+        options.type =
+          nativeTypeString === 'class' ? nativeType : nativeTypeString;
+      } else {
+        options.type = 'any';
+      }
+    }
+    if (nativeTypeString === 'array') {
+      options.array = true;
+    }
     Reflect.defineMetadata(SchemaMetaKey, options, objClass, key);
     if (options.type && typeof options.type !== 'string') {
       const cl = options.type as ClassConstructor<any>;

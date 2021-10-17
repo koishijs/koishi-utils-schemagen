@@ -3,17 +3,17 @@ import {
   SchemaConf,
   schemaFromClass,
   schemaTransform,
-} from '../src';
+} from '..';
 import { Schema } from 'koishi';
 
 @SchemaConf({
   desc: 'my desc',
 })
 class B {
-  @DefineSchema({ type: 'number', default: 2, desc: 'aaaaa' })
+  @DefineSchema({ default: 2, desc: 'aaaaa' })
   aa: number;
 
-  @DefineSchema({ type: 'boolean', default: true })
+  @DefineSchema({ default: true })
   bb: boolean;
 }
 
@@ -21,22 +21,22 @@ class B {
   desc: 'my base desc',
 })
 class A {
-  @DefineSchema({ type: 'number', required: true })
+  @DefineSchema({ required: true })
   a: number;
 
-  @DefineSchema({ type: 'string', default: 'shigma' })
+  @DefineSchema({ default: 'shigma' })
   b: string;
 
-  @DefineSchema({ type: 'string', array: true, default: ['foo', 'bar'] })
+  @DefineSchema({ type: 'string', default: ['foo', 'bar'] })
   c: string[];
 
-  @DefineSchema({ type: B })
+  @DefineSchema()
   bi: B;
 
-  @DefineSchema({ type: B, array: true })
+  @DefineSchema({ type: B })
   biArr: B[];
 
-  @DefineSchema({ type: B, dict: true, array: true })
+  @DefineSchema({ type: B, dict: true })
   biDict: Record<string, B>[];
 }
 

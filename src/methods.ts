@@ -27,6 +27,8 @@ function getBasePropertySchemaFromOptions(options: SchemaOptions) {
       return Schema.number();
     case 'boolean':
       return Schema.boolean();
+    case 'object':
+      return Schema.object({}, true);
     default:
       return Schema.any();
   }

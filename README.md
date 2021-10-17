@@ -1,4 +1,4 @@
-# Koishi Utils Schemagen
+# koishi-utils-schemagen
 
 在 Koishi.js 中，使用类装饰器定义 Schema。
 
@@ -23,14 +23,18 @@ export class Config {
   @DefineSchema({ type: 'number', required: true })
   foo: number;
 
+  // 非数组类型会尝试自动推断类型
+  @DefineSchema()
+  fooAutomated: number;
+
   @DefineSchema({ type: 'string', default: 'shigma' })
   bar: string;
 
   @DefineSchema({ type: 'boolean', default: true, hidden: true })
   baz: boolean;
 
-  // 数组
-  @DefineSchema({ type: 'string', array: true, default: ['foo', 'bar'] })
+  // 数组，系统会自动推断该类型为数组，但是此时 type 不可省略
+  @DefineSchema({ type: 'string', default: ['foo', 'bar'] })
   ant: string[];
 
   // 也可以用定义好的 Schema
@@ -49,7 +53,7 @@ export class Config {
   @ObjectSchema(B)
   anotherB: B;
 
-  // 字典
+  // 字典，type 也不可省略
   @DefineSchema({ type: B, dict: true })
   biDict: Record<string, B>;
 
@@ -67,3 +71,7 @@ const schema = schemaFromClass(Config);
 // 直接获取 Config 对象并实例化，可以代替 Schema.validate 使用。对于嵌套类会进行循环实例化。
 const config = schemaTransform(Config, someObject);
 ```
+
+### 类型推断
+
+koishi-utils-schemagen 会尝试自动从类定义推断 Schema 类型，但是无法自动推断数组和字典类型。
