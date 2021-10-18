@@ -94,7 +94,7 @@ export function schemaFromClass<T>(cl: ClassConstructor<T>): Schema<T> {
   let schema: Schema;
   const optionsDict = schemaOptionsFromClass(cl);
   if (!optionsDict) {
-    schema = Schema.any();
+    schema = Schema.object({}, true);
   } else {
     schema = schemasFromDict<T>(optionsDict);
   }
