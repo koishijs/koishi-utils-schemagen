@@ -34,12 +34,7 @@ function getStringFromNativeType(nativeType: any) {
   if (!nativeTypeString.startsWith('function ')) {
     return;
   }
-  const firstLeftBracketPos = nativeTypeString.indexOf('()');
-  if (firstLeftBracketPos === -1) {
-    return;
-  }
-  const typeString = nativeTypeString.slice(9, firstLeftBracketPos);
-  return typeString.toLowerCase();
+  return nativeType.name?.toLowerCase();
 }
 
 export function DefineSchema(options: SchemaOptions = {}): PropertyDecorator {

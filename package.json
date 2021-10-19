@@ -1,6 +1,6 @@
 {
   "name": "koishi-utils-schemagen",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "在 Koishi.js 中，使用类装饰器定义 Schema",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "koishijs",
     "utils-schema"
   ],
-  "author": "Nanahira",
+  "author": "Nanahira <nanahira@momobako.com>",
   "license": "MIT",
   "peerDependencies": {
     "koishi": "^4.0.0-alpha.10",
