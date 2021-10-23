@@ -13,14 +13,22 @@ class B {
 }
 
 @SchemaConf({
-  desc: 'my base desc',
+  desc: 'my base desc aaa',
 })
-class A {
-  @DefineSchema({ required: true })
+class ABase {
+  @DefineSchema({ required: true, desc: 'a from base' })
   a: number;
 
   @DefineSchema({ default: 'shigma' })
   b: string;
+}
+
+@SchemaConf({
+  desc: 'my base desc',
+})
+class A extends ABase {
+  @DefineSchema({ required: false, desc: 'a from ex' })
+  a: number;
 
   @DefineSchema({ type: 'string', default: ['foo', 'bar'] })
   c: string[];
