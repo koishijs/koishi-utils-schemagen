@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://code.mycard.moe/3rdeye/koishi-utils-schemagen.git"
+    "url": "https://github.com/koishijs/koishi-utils-schemagen.git"
   },
   "bugs": {
-    "url": "https://code.mycard.moe/3rdeye/koishi-utils-schemagen/issues"
+    "url": "https://github.com/koishijs/koishi-utils-schemagen/issues"
   },
-  "homepage": "https://code.mycard.moe/3rdeye/koishi-utils-schemagen",
+  "homepage": "https://github.com/koishijs/koishi-utils-schemagen",
   "keywords": [
     "Koishi.js",
     "koishi",
