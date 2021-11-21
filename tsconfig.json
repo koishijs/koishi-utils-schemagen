@@ -13,8 +13,8 @@
 	"compileOnSave": true,
 	"allowJs": true,
 	"include": [
-		"*.ts",
-		"src/**/*.ts",
-		"test/**/*.ts"
+		"index.ts",
+		"./src/**/*.ts",
+		"./test/**/*.ts"
 	]
 }
